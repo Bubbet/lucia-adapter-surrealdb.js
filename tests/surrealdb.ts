@@ -6,7 +6,7 @@ const db = new Surreal();
 await db.connect('http://localhost:8000');
 await db.use({ namespace: "lucia", database: "test" })
 
-const adapter = new SurrealDBAdapter(db, {
+const adapter = new SurrealDBAdapter(db, async () => db, {
 	user: 'user',
 	session: 'user_session'
 })
